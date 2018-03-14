@@ -250,6 +250,7 @@ configure(projectsToRelease) {
 configure(project("end-to-end-tests")) {
     task release(type: Copy) {
         from tasks.getByPath(":end-to-end-tests:testJar")
+        from 'templates/test_cluster.yml'
         into rootProject.file("build/blox-release/${project.name}")
     }
     rootProject.release.dependsOn(release)
